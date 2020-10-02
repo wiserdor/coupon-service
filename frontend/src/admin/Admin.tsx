@@ -23,7 +23,7 @@ export const Admin: FC = () => {
   const dataProvider = simpleRestProvider('api/v1', httpClient);
 useEffect(()=>{
 	let e=document.getElementById('root')
-	e.style.direction='ltr';
+	e!.style.direction='ltr';
 },[])
 
   return (
