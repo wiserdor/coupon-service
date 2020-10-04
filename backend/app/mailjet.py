@@ -1,13 +1,13 @@
 # import the mailjet wrapper
 import qrcode
-
+import os
 from mailjet_rest import Client
 import base64
 from io import BytesIO
 
 # Get your environment Mailjet keys
-API_KEY = ''
-API_SECRET = ''
+API_KEY = os.getenv('MAILJET_API')
+API_SECRET = os.getenv('MAILJET_SECRET')
 
 mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 
