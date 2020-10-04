@@ -5,7 +5,7 @@ import {
   Datagrid,
   TextField,
   ExportButton,
-  EmailField,
+  CardActions,
   CreateButton,
   EditButton,
   Toolbar,
@@ -22,10 +22,10 @@ const ListActions = (props: any) => {
     filterValues,
     exporter,
   } = props;
+
   return (
-    <div>
-      <Toolbar className={className}>
-        <CreateButton basePath={basePath} />
+      <CardActions className={className}>
+        <CreateButton  basePath={basePath}  />
         <ExportButton
           disabled={total === 0}
           resource={resource}
@@ -34,8 +34,7 @@ const ListActions = (props: any) => {
           exporter={exporter}
         />
         <ImportButton {...props} />
-      </Toolbar>
-    </div>
+      </CardActions>
   );
 };
 
