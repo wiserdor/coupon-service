@@ -10,7 +10,7 @@ import {
 } from 'react-admin';
 
 export const UserList: FC = (props) => (
-  <List {...props}>
+  <List style={{ overflowY: 'scroll', width: '84vw', direction:'ltr' }} {...props}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <EmailField source="email" />

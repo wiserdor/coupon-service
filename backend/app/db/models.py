@@ -1,8 +1,8 @@
 import uuid
 
-from sqlalchemy import Boolean, Column, Integer, String, text
+from sqlalchemy import Boolean, Column, Integer, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
-
+from datetime import datetime
 from .session import Base
 
 
@@ -34,6 +34,13 @@ class Coupon(Base):
     dress_used = Column(Boolean, default=False)
     makeup_used = Column(Boolean, default=False)
     hair_used = Column(Boolean, default=False)
+    created_date = Column(DateTime, default=datetime.utcnow())
+    hair_scanned_date = Column(DateTime, default=None)
+    makeup_scanned_date = Column(DateTime, default=None)
+    dress_scanned_date = Column(DateTime, default=None)
+    hair_scanned_location = Column(String)
+    dress_scanned_location = Column(String)
+    makeup_scanned_location = Column(String)
 
 
 class Vendor(Base):

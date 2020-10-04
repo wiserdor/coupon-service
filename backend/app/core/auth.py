@@ -2,8 +2,10 @@ import jwt
 from fastapi import Depends, HTTPException, status
 from jwt import PyJWTError
 
-from app.db import models, schemas, session
-from app.db.crud import get_user_by_email, create_user
+from app.db import models, session
+from app.db.schemas.auth import TokenData, Token
+from app.db.schemas.users import UserCreate
+from app.db.crud.users import get_user_by_email, create_user
 from app.core import security
 
 
@@ -23,7 +25,7 @@ async def get_current_user(
         if email is None:
             raise credentials_exception
         permissions: str = payload.get("permissions")
-        token_data = schemas.TokenData(email=email, permissions=permissions)
+        token_data = TokenData(email=email, permissions=permissions)
     except PyJWTError:
         raise credentials_exception
     user = get_user_by_email(db, token_data.email)
@@ -65,7 +67,7 @@ def sign_up_new_user(db, email: str, password: str):
         return False  # User already exists
     new_user = create_user(
         db,
-        schemas.UserCreate(
+        UserCreate(
             email=email,
             password=password,
             is_active=True,

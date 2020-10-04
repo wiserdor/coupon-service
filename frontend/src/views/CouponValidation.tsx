@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -28,6 +28,8 @@ const styles = makeStyles((theme) => ({
 
 export const CouponValidation: FC = () => {
   const { couponId } = useParams<{ couponId: string }>();
+  const history = useHistory();
+  const [geoLocation, setGeoLocation] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState<string>('');
@@ -39,12 +41,27 @@ export const CouponValidation: FC = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const classes = styles();
 
+  useEffect(() => {
+    console.log(couponId);
+    if (!couponId || couponId === '') {
+      history.push('/');
+    }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getPosition);
+    }
+    function getPosition(position: any) {
+      setGeoLocation(
+        `${position.coords.latitude},${position.coords.longitude}`
+      );
+    }
+  }, []);
+
   const onSubmit = () => {
     setUsedError(false);
     setWrongParamsError(false);
 
     let url = '/api/v1/validate';
-    const response = fetch(url, {
+    fetch(url, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -55,6 +72,7 @@ export const CouponValidation: FC = () => {
         phone: phone,
         coupon_id: couponId,
         password: password,
+        geo_location:geoLocation
       }),
     })
       .then((response) => {
@@ -69,8 +87,6 @@ export const CouponValidation: FC = () => {
         console.info(err);
       });
   };
-
-  useEffect(() => {}, []);
 
   if (showSuccess) return <h1 style={{ color: 'black' }}>Ok</h1>;
 

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Request, Depends, Response, encoders
 import typing as t
 
-from app.db.schemas import Vendor, VendorCreate, VendorEdit
+from app.db.schemas.vendors import Vendor, VendorCreate, VendorEdit
 from core.auth import get_current_active_superuser
-from db.crud import get_vendors, edit_vendor, delete_vendor, get_vendor, create_vendor
+from db.crud.vendors import get_vendors, edit_vendor, delete_vendor, get_vendor, create_vendor
 from db.session import get_db
 
 vendors_router = r = APIRouter()

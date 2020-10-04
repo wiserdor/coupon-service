@@ -6,8 +6,8 @@ import base64
 from io import BytesIO
 
 # Get your environment Mailjet keys
-API_KEY = ''
-API_SECRET = ''
+API_KEY = '2c99fdc71852f0d0462f1dba726f3d6e'
+API_SECRET = 'c6d15935dda204af494e6c026424a816'
 
 mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 
@@ -42,7 +42,7 @@ def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
                 ],
                 "Subject": subject,
                 "TextPart": text_part,
-                "HTMLPart": '<img src=\"cid:id1\">',
+                "HTMLPart": '<img src=\"cid:id1\"><div><a href=\"'+qr_link+'\">לינק</a></div>',
                 "InlinedAttachments": [
                     {
                         "ContentType": "image/png",

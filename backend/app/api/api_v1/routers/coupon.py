@@ -1,12 +1,21 @@
-from fastapi import APIRouter, Request, Depends, Response, HTTPException, status
+from datetime import datetime
+
+from fastapi import APIRouter, Request, Depends, Response, HTTPException
 import typing as t
 
 from starlette.responses import RedirectResponse
 
-from app.db.schemas import Coupon, CouponCreate, CouponEdit, CouponValidate
+from app.db.schemas.coupons import Coupon, CouponCreate, CouponEdit, CouponValidate, CouponOut
 from core.auth import get_current_active_superuser
-from db.crud import get_coupons, create_coupon, edit_coupon, delete_coupon, get_coupon, get_coupon_by_coupon_id, \
-    get_vendor_by_email
+from db.crud.coupons import (
+    get_coupons,
+    create_coupon,
+    edit_coupon,
+    delete_coupon,
+    get_coupon,
+    get_coupon_by_coupon_id
+)
+from db.crud.vendors import get_vendor_by_email
 from db.session import get_db
 
 coupons_router = r = APIRouter()
@@ -104,7 +113,6 @@ async def validate_coupon(
     """
     Validate coupon
     """
-    response = RedirectResponse(url="http://localhost:8000/completed")
     coupon = get_coupon_by_coupon_id(db, coupon_validation.coupon_id)
     vendor = get_vendor_by_email(db, coupon_validation.email)
     if coupon_validation.password == "hair":
@@ -112,18 +120,24 @@ async def validate_coupon(
             raise HTTPException(409, "Coupon already used")
         else:
             coupon.hair_used = True
+            coupon.hair_scanned_date = datetime.utcnow()
+            coupon.hair_scanned_location = coupon_validation.geo_location
             db.commit()
     elif coupon_validation.password == "dress":
         if coupon.dress_used:
             raise HTTPException(409, "Coupon already used")
         else:
             coupon.dress_used = True
+            coupon.dress_scanned_date = datetime.utcnow()
+            coupon.dress_scanned_location = coupon_validation.geo_location
             db.commit()
     elif coupon_validation.password == "makeup":
         if coupon.makeup_used:
             raise HTTPException(409, "Coupon already used")
         else:
             coupon.makeup_used = True
+            coupon.makeup_scanned_date = datetime.utcnow()
+            coupon.makeup_scanned_location = coupon_validation.geo_location
             db.commit()
     else:
         raise HTTPException(401, "Incorrect Values")
