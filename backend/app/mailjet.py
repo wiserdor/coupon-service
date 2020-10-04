@@ -6,8 +6,8 @@ import base64
 from io import BytesIO
 
 # Get your environment Mailjet keys
-API_KEY = '2c99fdc71852f0d0462f1dba726f3d6e'
-API_SECRET = 'c6d15935dda204af494e6c026424a816'
+API_KEY = ''
+API_SECRET = ''
 
 mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 

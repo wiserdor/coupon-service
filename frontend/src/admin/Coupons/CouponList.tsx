@@ -8,39 +8,11 @@ import {
   EmailField,
   EditButton,
   DateField,
-  CreateButton,
-  ExportButton,
-  Toolbar
 } from 'react-admin';
-import ImportButton from '../import'
 
-const ListActions = (props:any) => {
-    const { 
-      className, 
-      basePath, 
-      total, 
-      resource, 
-      currentSort, 
-      filterValues, 
-      exporter 
-    } = props;
-    return (
-      <Toolbar className={className}>
-        <CreateButton basePath={basePath} />
-        <ExportButton
-          disabled={total === 0}
-          resource={resource}
-          sort={currentSort}
-          filter={filterValues}
-          exporter={exporter}
-        />
-        <ImportButton {...props} />
-      </Toolbar>
-    );
-  };
 
 export const CouponList: FC = (props) => (
-  <List actions={<ListActions />} style={{ overflowY: 'scroll', width: '84vw', direction:'ltr' }} {...props}>
+  <List style={{ overflowY: 'scroll', width: '84vw', direction:'ltr' }} {...props}>
     <Datagrid rowClick="edit" >
       <TextField source="id" />
       <EmailField source="email" />
