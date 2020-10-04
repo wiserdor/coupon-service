@@ -8,21 +8,22 @@ import {
   EmailField,
   CreateButton,
   EditButton,
-  Toolbar
+  Toolbar,
 } from 'react-admin';
-import ImportButton from '../import'
+import ImportButton from '../import';
 
-const ListActions = (props:any) => {
-    const { 
-      className, 
-      basePath, 
-      total, 
-      resource, 
-      currentSort, 
-      filterValues, 
-      exporter 
-    } = props;
-    return (
+const ListActions = (props: any) => {
+  const {
+    className,
+    basePath,
+    total,
+    resource,
+    currentSort,
+    filterValues,
+    exporter,
+  } = props;
+  return (
+    <div>
       <Toolbar className={className}>
         <CreateButton basePath={basePath} />
         <ExportButton
@@ -34,12 +35,16 @@ const ListActions = (props:any) => {
         />
         <ImportButton {...props} />
       </Toolbar>
-    );
-  };
-
+    </div>
+  );
+};
 
 export const VendorList: FC = (props) => (
-  <List  actions={<ListActions />}  style={{ overflowY: 'scroll', width: '84vw', direction:'ltr' }} {...props}>
+  <List
+    actions={<ListActions />}
+    style={{ overflowY: 'scroll', width: '84vw', direction: 'ltr' }}
+    {...props}
+  >
     <Datagrid rowClick="edit">
       <TextField disabled source="id" />
       <TextField source="email" />

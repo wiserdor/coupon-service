@@ -53,7 +53,7 @@ export const Home: FC = () => {
       setNameError(false);
     }
     let url = '/api/v1/coupons';
-    const response = fetch(url, {
+    fetch(url, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
