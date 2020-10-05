@@ -5,16 +5,18 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
+import Title from './Title';
+
 const styles = makeStyles((theme) => ({
   container: {
-    color: 'black',
+    color: '#333333',
     direction: 'rtl',
   },
   link: {
-    color: 'black',
+    color: '#333333',
   },
   title: {
-    color: 'black',
+    color: '#333333',
   },
   button: {
     fontSize: '1.5rem',
@@ -92,6 +94,7 @@ export const CouponValidation: FC = () => {
 
   return (
     <Container className={classes.container}>
+        <Title />
       <h3 className={classes.link}>אנא הכניסו פרטים לאישור הקופון</h3>
       <div className={classes.input}>
         <TextField

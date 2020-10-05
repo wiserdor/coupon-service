@@ -4,16 +4,18 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import Title from './Title';
+
 const styles = makeStyles((theme) => ({
   container: {
-    color: 'black',
+    color: '#333333',
     direction: 'rtl',
   },
   link: {
-    color: 'black',
+    color: '#333333',
   },
   title: {
-    color: 'black',
+    color: '#333333',
   },
   button: {
     fontSize: '1.5rem',
@@ -35,7 +37,7 @@ export const Home: FC = () => {
 
   const isMailValid = () => {
     //return /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
-	return true;
+    return true;
   };
 
   const onSubmit = (e: any) => {
@@ -78,7 +80,7 @@ export const Home: FC = () => {
 
   return (
     <Container className={classes.container}>
-      <h1 className={classes.title}>ברוכים הבאים</h1>
+      <Title />
       <h3 className={classes.link}>אנא הכניסו פרטים לקבלת הקופון</h3>
       <div className={classes.input}>
         <TextField
