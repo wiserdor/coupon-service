@@ -68,6 +68,7 @@ async def coupon_create(
     """
     Create a new Coupon
     """
+    coupon.email = coupon.email.lower()
     return create_coupon(db, coupon)
 
 
