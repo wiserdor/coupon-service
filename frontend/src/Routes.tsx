@@ -4,8 +4,16 @@ import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 import RTL from './rtl';
 
-import { CouponValidation, Home } from './views';
+import {
+  CouponValidation,
+  Home,
+  Login,
+  SignUp,
+  Protected,
+  PrivateRoute,
+} from './views';
 import { Admin } from './admin';
+import { logout } from './utils/auth';
 
 const styles = makeStyles((theme) => ({
   app: {
@@ -28,6 +36,7 @@ const styles = makeStyles((theme) => ({
 }));
 
 export const Routes: FC = () => {
+  const history = useHistory();
   const classes = styles();
 
   return (
@@ -41,8 +50,18 @@ export const Routes: FC = () => {
           <header className={classes.header}>
             <RTL>
               <Route exact path="/" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={SignUp} />
               <Route
-                exact
+                path="/logout"
+                render={() => {
+                  logout();
+                  history.push('/');
+                  return null;
+                }}
+              />
+              <PrivateRoute path="/protected" component={Protected} />
+              <Route
                 path="/coupon/:couponId"
                 component={CouponValidation}
               />

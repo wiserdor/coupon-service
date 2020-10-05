@@ -27,6 +27,7 @@ export const CouponList: FC = (props) => (
       <TextField source="makeup_scanned_location" allowEmpty />
       <DateField source="hair_scanned_date" allowEmpty />
       <DateField source="dress_scanned_date" allowEmpty />
+      <DateField source="makeup_scanned_date" allowEmpty />
       <DateField source="created_date" allowEmpty />
       <EditButton />
     </Datagrid>
