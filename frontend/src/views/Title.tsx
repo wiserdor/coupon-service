@@ -7,9 +7,9 @@ const Title = () => {
         style={{
           color: 'black',
           fontFamily: 'Bungee Hairline',
-          fontSize: '5rem',
+          fontSize: '4rem',
           fontWeight: 'bold',
-          height: '9rem',
+          height: '8rem',
         }}
       >
         N E S H E F
@@ -18,7 +18,7 @@ const Title = () => {
         style={{
           color: 'black',
           fontFamily: 'Bungee Hairline',
-          fontSize: '2rem',
+          fontSize: '1rem',
           fontWeight: 'bold',
         }}
       >
