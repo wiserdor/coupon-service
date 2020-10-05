@@ -13,7 +13,7 @@ mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 
 
 def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
-    qr_link = "http://138.197.178.22/coupon/" + str(coupon_id)
+    qr_link = "https://www.wiserdo.com/coupon/" + str(coupon_id)
     qr = qrcode.QRCode(
         version=1,
         box_size=10,
