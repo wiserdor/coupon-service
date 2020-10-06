@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', marginBottom:'7vh' }}>
       <div
         style={{
           color: 'black',

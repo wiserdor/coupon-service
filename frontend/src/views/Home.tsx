@@ -13,7 +13,7 @@ const styles = makeStyles((theme) => ({
   },
   link: {
     color: '#333333',
-    fontWeight:600,
+    fontWeight: 600,
   },
   title: {
     color: '#333333',
@@ -80,39 +80,40 @@ export const Home: FC = () => {
     );
 
   return (
-    <Container className={classes.container}>
-      <Title />
-      <h3 className={classes.link}>הכניסו פרטים לקבלת הקופון</h3>
-      <div className={classes.input}>
-        <TextField
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ width: '17rem' }}
-          id="standard-basic"
-          label="אימייל"
-          variant="outlined"
-          error={emailError}
-        />
-      </div>
-      <div className={classes.input}>
-        <TextField
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{ width: '17rem' }}
-          id="standard-basic2"
-          label="שם מלא"
-          variant="outlined"
-          error={nameError}
-        />
-      </div>
-      <Button
-        onClick={onSubmit}
-        className={classes.button}
-        variant="contained"
-        color="secondary"
-      >
-        שלח
-      </Button>
-    </Container>
+    <>
+      <Container className={classes.container}>
+        <h3 className={classes.link}>הכניסו פרטים לקבלת הקופון</h3>
+        <div className={classes.input}>
+          <TextField
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{ width: '17rem' }}
+            id="standard-basic"
+            label="אימייל"
+            variant="outlined"
+            error={emailError}
+          />
+        </div>
+        <div className={classes.input}>
+          <TextField
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{ width: '17rem' }}
+            id="standard-basic2"
+            label="שם מלא"
+            variant="outlined"
+            error={nameError}
+          />
+        </div>
+        <Button
+          onClick={onSubmit}
+          className={classes.button}
+          variant="contained"
+          color="secondary"
+        >
+          שלח
+        </Button>
+      </Container>
+    </>
   );
 };

@@ -95,7 +95,6 @@ export const CouponValidation: FC = () => {
 
   return (
     <Container className={classes.container}>
-        <Title />
       <h3 className={classes.link}>הכניסו פרטים לאישור הקופון</h3>
       <div className={classes.input}>
         <TextField
