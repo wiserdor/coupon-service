@@ -10,7 +10,8 @@ const Title = () => {
           fontSize: 'xxx-large',
           fontWeight: 'bold',
           height: '6rem',
-          whiteSpace:'nowrap'
+          whiteSpace:'nowrap',
+          marginTop:'7vh',
         }}
       >
         N E S H E F
