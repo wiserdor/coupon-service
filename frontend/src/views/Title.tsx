@@ -2,14 +2,14 @@ import React from 'react';
 
 const Title = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', marginBottom:'10vh', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', marginBottom:'5vh', alignItems: 'center' }}>
       <div
         style={{
           color: 'black',
           fontFamily: 'Bungee Hairline',
           fontSize: 'xxx-large',
           fontWeight: 'bold',
-          height: '6rem',
+          height: '5rem',
           whiteSpace:'nowrap',
           marginTop:'7vh',
         }}
