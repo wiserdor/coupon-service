@@ -20,8 +20,8 @@ const styles = makeStyles((theme) => ({
   },
   button: {
     fontSize: '1.5rem',
-    fontWeight: 700,
-    width: '20rem',
+    fontWeight: 600,
+    width: '18rem',
   },
   input: {
     marginBottom: '1rem',
