@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', marginBottom:'15vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', marginBottom:'10vh', alignItems: 'center' }}>
       <div
         style={{
           color: 'black',
@@ -22,6 +22,8 @@ const Title = () => {
           fontFamily: 'Bungee Hairline',
           fontSize: '1rem',
           fontWeight: 'bold',
+          borderBottom:'solid 4px',
+          backgroundColor:'#EBF3E9'
         }}
       >
         ALWAYS CLASSY, JUST A LITTLE BIT SASSY
