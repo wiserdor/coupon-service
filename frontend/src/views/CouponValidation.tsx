@@ -14,6 +14,7 @@ const styles = makeStyles((theme) => ({
   },
   link: {
     color: '#333333',
+    fontWeight:600,
   },
   title: {
     color: '#333333',
@@ -95,7 +96,7 @@ export const CouponValidation: FC = () => {
   return (
     <Container className={classes.container}>
         <Title />
-      <h3 className={classes.link}>אנא הכניסו פרטים לאישור הקופון</h3>
+      <h3 className={classes.link}>הכניסו פרטים לאישור הקופון</h3>
       <div className={classes.input}>
         <TextField
           autoComplete="new-password"

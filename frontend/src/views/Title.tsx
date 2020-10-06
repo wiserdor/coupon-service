@@ -7,14 +7,15 @@ const Title = () => {
         style={{
           color: 'black',
           fontFamily: 'Bungee Hairline',
-          fontSize: '4rem',
+          fontSize: 'xxx-large',
           fontWeight: 'bold',
-          height: '8rem',
+          height: '6rem',
+          whiteSpace:'nowrap'
         }}
       >
         N E S H E F
       </div>
-      {/* <div
+      <div
         style={{
           color: 'black',
           fontFamily: 'Bungee Hairline',
@@ -23,7 +24,7 @@ const Title = () => {
         }}
       >
         ALWAYS CLASSY, JUST A LITTLE BIT SASSY
-      </div> */}
+      </div>
     </div>
   );
 };
