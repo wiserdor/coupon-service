@@ -42,7 +42,7 @@ def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
                 ],
                 "Subject": subject,
                 "TextPart": text_part,
-                "HTMLPart": '<img src=\"cid:id1\"><div><a href=\"'+qr_link+'\">לינק</a></div>',
+                "HTMLPart": '<img src=\"cid:id1\"><div><a href=\"'+qr_link+'\">link</a></div>',
                 "InlinedAttachments": [
                     {
                         "ContentType": "image/png",

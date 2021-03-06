@@ -23,7 +23,9 @@ class Coupon(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, nullable=False)
-    name = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
+    phone = Column(String)
     coupon_id = Column(
         UUID(as_uuid=True),
         nullable=False,
@@ -48,5 +50,17 @@ class Vendor(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String)
-    name = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
     phone = Column(String)
+
+
+class CouponConfig(Base):
+    __tablename__ = "coupon_config"
+
+    id = Column(Integer, primary_key=True, index=True)
+    max_coupons_per_user = Column(Integer, default='500')
+    hair_password = Column(String, default='hair')
+    dress_password = Column(String, default='dress')
+    makeup_password = Column(String, default='makeup')
+    email_template = Column(String)

@@ -16,6 +16,7 @@ from db.crud.coupons import (
     get_coupon_by_coupon_id
 )
 from db.crud.vendors import get_vendor_by_email
+from db.models import CouponConfig
 from db.session import get_db
 
 coupons_router = r = APIRouter()
@@ -68,6 +69,11 @@ async def coupon_create(
     """
     Create a new Coupon
     """
+    coupon_config = db.query(CouponConfig).first()
+
+    user_coupons_count = db.query(Coupon).filter(Coupon.email == coupon.email and Coupon.phone == coupon.phone).count()
+    if user_coupons_count == coupon_config:
+        return HTTPException(400, 'User reached coupon limit')
     coupon.email = coupon.email.lower()
     return create_coupon(db, coupon)
 
@@ -116,7 +122,9 @@ async def validate_coupon(
     """
     coupon = get_coupon_by_coupon_id(db, coupon_validation.coupon_id)
     vendor = get_vendor_by_email(db, coupon_validation.email)
-    if coupon_validation.password == "hair":
+    coupon_config = db.query(CouponConfig).first()
+
+    if coupon_validation.password == coupon_config.hair_password:
         if coupon.hair_used:
             raise HTTPException(409, "Coupon already used")
         else:
@@ -124,7 +132,7 @@ async def validate_coupon(
             coupon.hair_scanned_date = datetime.utcnow()
             coupon.hair_scanned_location = coupon_validation.geo_location
             db.commit()
-    elif coupon_validation.password == "dress":
+    elif coupon_validation.password == coupon_config.dress_password:
         if coupon.dress_used:
             raise HTTPException(409, "Coupon already used")
         else:
@@ -132,7 +140,7 @@ async def validate_coupon(
             coupon.dress_scanned_date = datetime.utcnow()
             coupon.dress_scanned_location = coupon_validation.geo_location
             db.commit()
-    elif coupon_validation.password == "makeup":
+    elif coupon_validation.password == coupon_config.makeup_password:
         if coupon.makeup_used:
             raise HTTPException(409, "Coupon already used")
         else:

@@ -5,7 +5,9 @@ from typing import Optional
 
 class CouponBase(BaseModel):
     email: str
-    name: str
+    phone: str
+    first_name: Optional[str]
+    last_name: Optional[str]
 
 
 class CouponOut(CouponBase):
