@@ -23,9 +23,9 @@ class Coupon(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, nullable=False)
-    first_name = Column(String)
-    last_name = Column(String)
-    phone = Column(String)
+    first_name = Column(String, nullable=True)
+    last_name = Column(String, nullable=True)
+    phone = Column(String, nullable=False)
     coupon_id = Column(
         UUID(as_uuid=True),
         nullable=False,

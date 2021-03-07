@@ -18,6 +18,7 @@ class CouponOut(CouponBase):
 
 
 class CouponCreate(CouponBase):
+
     class Config:
         orm_mode = True
 
