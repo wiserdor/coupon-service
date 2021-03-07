@@ -40,9 +40,9 @@ class Coupon(Base):
     hair_scanned_date = Column(DateTime, default=None)
     makeup_scanned_date = Column(DateTime, default=None)
     dress_scanned_date = Column(DateTime, default=None)
-    hair_scanned_location = Column(String)
-    dress_scanned_location = Column(String)
-    makeup_scanned_location = Column(String)
+    hair_scanned_location = Column(String, default=None)
+    dress_scanned_location = Column(String, default=None)
+    makeup_scanned_location = Column(String, default=None)
 
 
 class Vendor(Base):
@@ -63,4 +63,4 @@ class CouponConfig(Base):
     hair_password = Column(String, default='hair')
     dress_password = Column(String, default='dress')
     makeup_password = Column(String, default='makeup')
-    email_template = Column(String)
+    email_template = Column(String, default='')

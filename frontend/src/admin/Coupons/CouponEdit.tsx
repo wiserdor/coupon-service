@@ -14,7 +14,9 @@ export const CouponEdit: FC = (props) => (
     <TextInput disabled source="id" />
 
     <TextInput source="email" />
-      <TextInput source="name" />
+      <TextInput source="first_name" />
+      <TextInput source="last_name" />
+      <TextInput source="phone" />
       <TextInput source="coupon_id" />
       <BooleanInput source="dress_used" />
       <BooleanInput source="makeup_used" />

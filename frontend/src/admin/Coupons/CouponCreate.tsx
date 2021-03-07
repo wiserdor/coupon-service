@@ -10,7 +10,9 @@ export const CouponCreate: FC = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="email" />
-      <TextInput source="name" />
+      <TextInput source="first_name" />
+      <TextInput source="last_name" />
+      <TextInput source="phone" />
     </SimpleForm>
   </Create>
 );

@@ -16,7 +16,7 @@ from db.crud.coupons import (
     get_coupon_by_coupon_id
 )
 from db.crud.vendors import get_vendor_by_email
-from db.models import CouponConfig
+import db.models as models
 from db.session import get_db
 
 coupons_router = r = APIRouter()
@@ -69,10 +69,11 @@ async def coupon_create(
     """
     Create a new Coupon
     """
-    coupon_config = db.query(CouponConfig).first()
+    coupon_config = db.query(models.CouponConfig).first()
 
-    user_coupons_count = db.query(Coupon).filter(Coupon.email == coupon.email and Coupon.phone == coupon.phone).count()
-    if user_coupons_count == coupon_config:
+    user_coupons_count = db.query(models.Coupon).filter_by(email=coupon.email, phone=coupon.phone).count()
+    print(user_coupons_count)
+    if user_coupons_count >= coupon_config.max_coupons_per_user:
         return HTTPException(400, 'User reached coupon limit')
     coupon.email = coupon.email.lower()
     return create_coupon(db, coupon)
@@ -122,7 +123,7 @@ async def validate_coupon(
     """
     coupon = get_coupon_by_coupon_id(db, coupon_validation.coupon_id)
     vendor = get_vendor_by_email(db, coupon_validation.email)
-    coupon_config = db.query(CouponConfig).first()
+    coupon_config = db.query(models.CouponConfig).first()
 
     if coupon_validation.password == coupon_config.hair_password:
         if coupon.hair_used:

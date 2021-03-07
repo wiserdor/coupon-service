@@ -6,6 +6,7 @@ from app.api.api_v1.routers.vendors import vendors_router
 from app.api.api_v1.routers.users import users_router
 from app.api.api_v1.routers.auth import auth_router
 from app.api.api_v1.routers.coupon import coupons_router, public_coupon_router
+from app.api.api_v1.routers.coupon_config import coupon_config_router
 from app.core import config
 from app.db.session import SessionLocal
 from app.core.auth import get_current_active_user, get_current_active_superuser
@@ -47,6 +48,12 @@ app.include_router(
     coupons_router,
     prefix="/api/v1",
     tags=["coupons"],
+    dependencies=[Depends(get_current_active_user)],
+)
+app.include_router(
+    coupon_config_router,
+    prefix="/api/v1",
+    tags=["coupon_config"],
     dependencies=[Depends(get_current_active_user)],
 )
 app.include_router(

@@ -6,6 +6,7 @@ import authProvider from './authProvider';
 import { UserList, UserEdit, UserCreate } from './Users';
 import { CouponList, CouponEdit, CouponCreate } from './Coupons';
 import { VendorList, VendorEdit, VendorCreate } from './Vendors';
+import { CouponConfigCreate, CouponConfigEdit, CouponConfigList } from './CouponConfig';
 
 const httpClient = (url: any, options: any) => {
   if (!options) {
@@ -51,6 +52,14 @@ useEffect(()=>{
             list={VendorList}
             edit={VendorEdit}
             create={VendorCreate}
+          />
+        ) : null,
+        permissions === 'admin' ? (
+          <Resource
+            name="coupon_config"
+            list={CouponConfigList}
+            edit={CouponConfigEdit}
+            create={CouponConfigCreate}
           />
         ) : null,
       ]}

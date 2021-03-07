@@ -30,7 +30,9 @@ const styles = makeStyles((theme) => ({
 
 export const Home: FC = () => {
   const [email, setEmail] = useState<string>('');
-  const [name, setName] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
   const [emailError, setEmailError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -49,7 +51,7 @@ export const Home: FC = () => {
     } else {
       setEmailError(false);
     }
-    if (name.length === 0) {
+    if (phone.length === 0) {
       setNameError(true);
       return;
     } else {
@@ -62,7 +64,12 @@ export const Home: FC = () => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: email, name: name }),
+      body: JSON.stringify({
+        email,
+        first_name: firstName,
+        last_name: lastName,
+        phone,
+      }),
     })
       .then((response) => {
         if (response.ok) setShowSuccess(true);
@@ -96,11 +103,31 @@ export const Home: FC = () => {
         </div>
         <div className={classes.input}>
           <TextField
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             style={{ width: '17rem' }}
             id="standard-basic2"
-            label="שם מלא"
+            label="שם פרטי"
+            variant="outlined"
+          />
+        </div>
+        <div className={classes.input}>
+          <TextField
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            style={{ width: '17rem' }}
+            id="standard-basic2"
+            label="שם משפחה"
+            variant="outlined"
+          />
+        </div>
+        <div className={classes.input}>
+          <TextField
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            style={{ width: '17rem' }}
+            id="standard-basic2"
+            label="טלפון"
             variant="outlined"
             error={nameError}
           />

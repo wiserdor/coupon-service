@@ -33,7 +33,9 @@ def get_coupon_by_coupon_id(db: Session, coupon_id: str) -> Coupon:
 
 def create_coupon(db: Session, coupon: CouponCreate):
     db_coupon = models.Coupon(
-        name=coupon.name,
+        first_name=coupon.first_name,
+        last_name=coupon.last_name,
+        phone=coupon.phone,
         email=coupon.email,
     )
     db.add(db_coupon)
