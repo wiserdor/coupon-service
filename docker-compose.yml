@@ -52,8 +52,9 @@ services:
     environment:
       PYTHONPATH: .
       DATABASE_URL: 'postgresql://postgres:password@postgres:5432/postgres'
-      MAILJET_API: ''
-      MAILJET_SECRET: ''
+      SITE_URL: "${SITE_URL}"
+      MAILJET_API: "${MAILJET_API}"
+      MAILJET_SECRET: "${MAILJET_SECRET}"
     ports:
       - 8000:8888
     depends_on:
