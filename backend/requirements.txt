@@ -19,3 +19,4 @@ python-multipart==0.0.5
 pyjwt==1.7.1
 mailjet-rest==1.3.3
 qrcode==6.1
+pillow
