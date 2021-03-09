@@ -43,7 +43,6 @@ def create_coupon(db: Session, coupon: CouponCreate) -> CouponCreate:
     db.refresh(db_coupon)
     print("sending")
     send_email(coupon.email, 'Shafir and omri', 'girl', 'הקופון שלך מוכן', 'קיבלת קופון', db_coupon.coupon_id)
-    pprint.pprint(db_coupon.__dict__)
     return db_coupon
 
 

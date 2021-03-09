@@ -1,13 +1,13 @@
 version: '3.7'
 services:
-  nginx:
-    image: nginx:1.17
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-    ports:
-      - 8000:80
-    depends_on:
-      - backend
+#  nginx:
+#    image: nginx:1.17
+#    volumes:
+#      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+#    ports:
+#      - 8000:80
+#    depends_on:
+#      - backend
 #      - frontend
 
 #  redis:
@@ -52,6 +52,10 @@ services:
     environment:
       PYTHONPATH: .
       DATABASE_URL: 'postgresql://postgres:password@postgres:5432/postgres'
+      MAILJET_API: ''
+      MAILJET_SECRET: ''
+    ports:
+      - 8000:8888
     depends_on:
       - "postgres"
 
