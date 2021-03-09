@@ -6,6 +6,8 @@ import base64
 from io import BytesIO
 
 # Get your environment Mailjet keys
+from db import models
+
 API_KEY = os.getenv('MAILJET_API')
 API_SECRET = os.getenv('MAILJET_SECRET')
 SITE_URL = os.getenv('SITE_URL')
@@ -13,8 +15,8 @@ SITE_URL = os.getenv('SITE_URL')
 mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 
 
-def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
-    print('======='+API_KEY)
+def send_email(db: Session, to_mail, from_name, to_name, subject, text_part, coupon_id):
+    print('=======' + API_KEY)
     qr_link = f"{SITE_URL}coupon/" + str(coupon_id)
     qr = qrcode.QRCode(
         version=1,
@@ -29,6 +31,11 @@ def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
     img.save(buffered, format="JPEG")
     img_b = base64.b64encode(buffered.getvalue())
     img_str = img_b.decode('ascii')
+
+    coupon_config = db.query(models.CouponConfig).first()
+    html_string = coupon_config.email_template
+    html_string = html_string.replace('$$QR$$', qr_link)
+
     data = {
         'Messages': [
             {
@@ -44,7 +51,7 @@ def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
                 ],
                 "Subject": subject,
                 "TextPart": text_part,
-                "HTMLPart": '<img src=\"cid:id1\"><div><a href=\"'+qr_link+'\">link</a></div>',
+                "HTMLPart": html_string,
                 "InlinedAttachments": [
                     {
                         "ContentType": "image/png",

@@ -42,7 +42,7 @@ def create_coupon(db: Session, coupon: CouponCreate) -> CouponCreate:
     db.commit()
     db.refresh(db_coupon)
     print("sending")
-    send_email(coupon.email, 'Shafir and omri', 'girl', 'הקופון שלך מוכן', 'קיבלת קופון', db_coupon.coupon_id)
+    send_email(db, coupon.email, 'Shafir and omri', 'girl', 'הקופון שלך מוכן', 'קיבלת קופון', db_coupon.coupon_id)
     return db_coupon
 
 
