@@ -4,9 +4,10 @@ import os
 from mailjet_rest import Client
 import base64
 from io import BytesIO
+from sqlalchemy.orm import Session
+from db import models
 
 # Get your environment Mailjet keys
-from db import models
 
 API_KEY = os.getenv('MAILJET_API')
 API_SECRET = os.getenv('MAILJET_SECRET')
