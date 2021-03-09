@@ -2,6 +2,7 @@
 
 from app.db.session import get_db
 from app.db.crud.users import create_user
+from app.db.crud.coupon_config import create_coupon_config
 from app.db.schemas.users import UserCreate
 from app.db.session import SessionLocal
 
@@ -18,6 +19,8 @@ def init() -> None:
             is_superuser=True,
         ),
     )
+
+    create_coupon_config(db)
 
 
 if __name__ == "__main__":
