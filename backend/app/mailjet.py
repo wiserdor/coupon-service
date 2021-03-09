@@ -8,12 +8,13 @@ from io import BytesIO
 # Get your environment Mailjet keys
 API_KEY = os.getenv('MAILJET_API')
 API_SECRET = os.getenv('MAILJET_SECRET')
+SITE_URL = os.getenv('SITE_URL')
 
 mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 
 
 def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
-    qr_link = "https://www.wiserdo.com/coupon/" + str(coupon_id)
+    qr_link = f"{SITE_URL}coupon/" + str(coupon_id)
     qr = qrcode.QRCode(
         version=1,
         box_size=10,
@@ -31,7 +32,7 @@ def send_email(to_mail, from_name, to_name, subject, text_part, coupon_id):
         'Messages': [
             {
                 "From": {
-                    "Email": "vgibsonsg@gmail.com",
+                    "Email": "info@neshef.co.il",
                     "Name": from_name
                 },
                 "To": [
