@@ -3,8 +3,7 @@ from datetime import datetime
 from fastapi import APIRouter, Request, Depends, Response, HTTPException
 import typing as t
 
-from starlette.responses import RedirectResponse
-
+from sqlalchemy import or_
 from app.db.schemas.coupons import Coupon, CouponCreate, CouponEdit, CouponValidate, CouponOut
 from core.auth import get_current_active_superuser
 from db.crud.coupons import (
@@ -71,8 +70,8 @@ async def coupon_create(
     """
     coupon_config = db.query(models.CouponConfig).first()
 
-    user_coupons_count = db.query(models.Coupon).filter(
-        models.Coupon == coupon.email.lower() or models.Coupon.phone == coupon.phone).count()
+    user_coupons_count = db.query(models.Coupon).filter(or_(
+        models.Coupon == coupon.email.lower(), models.Coupon.phone == coupon.phone)).count()
     if user_coupons_count >= coupon_config.max_coupons_per_user:
         raise HTTPException(400, 'User reached coupon limit')
     coupon.email = coupon.email.lower()
