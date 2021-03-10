@@ -35,7 +35,7 @@ def send_email(db: Session, to_mail, from_name, to_name, subject, text_part, cou
 
     coupon_config = db.query(models.CouponConfig).first()
     html_string = coupon_config.email_template
-    html_string = html_string.replace('$$QR$$', qr_link)
+    html_string = html_string.replace('$$LINK$$', qr_link)
 
     data = {
         'Messages': [

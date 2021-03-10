@@ -63,4 +63,4 @@ class CouponConfig(Base):
     hair_password = Column(String, default='hair')
     dress_password = Column(String, default='dress')
     makeup_password = Column(String, default='makeup')
-    email_template = Column(String, default='<img src="cid:id1"><div><a href="$$QR$$">link</a></div>')
+    email_template = Column(String, default='<img src="cid:id1"><div><a href="$$LINK$$">link</a></div>')
