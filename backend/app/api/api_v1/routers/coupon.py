@@ -70,9 +70,8 @@ async def coupon_create(
     """
     coupon_config = db.query(models.CouponConfig).first()
 
-    user_coupons_count = db.query(models.Coupon).filter(
-        (models.Coupon == coupon.email.lower()) | (models.Coupon.phone == coupon.phone)).count()
-    print(user_coupons_count)
+    user_coupons_count = db.query(models.Coupon).filter(or_(
+        models.Coupon.email == coupon.email.lower(), models.Coupon.phone == coupon.phone)).count()
     if user_coupons_count >= coupon_config.max_coupons_per_user:
         raise HTTPException(400, 'User reached coupon limit')
     coupon.email = coupon.email.lower()
