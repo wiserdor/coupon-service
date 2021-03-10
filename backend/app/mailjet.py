@@ -17,7 +17,6 @@ mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 
 
 def send_email(db: Session, to_mail, from_name, to_name, subject, text_part, coupon_id):
-    print('=======' + API_KEY)
     qr_link = f"{SITE_URL}coupon/" + str(coupon_id)
     qr = qrcode.QRCode(
         version=1,
