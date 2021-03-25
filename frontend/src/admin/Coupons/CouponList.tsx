@@ -25,6 +25,9 @@ export const CouponList: FC = (props) => (
       <BooleanField source="dress_used" />
       <BooleanField source="makeup_used" />
       <BooleanField source="hair_used" />
+      <TextField source="dress_vendor" />
+      <TextField source="makeup_vendor" />
+      <TextField source="hair_vendor" />
       <DateField source="created_date" allowEmpty />
       <TextField source="hair_scanned_location" allowEmpty />
       <TextField source="dress_scanned_location" allowEmpty />

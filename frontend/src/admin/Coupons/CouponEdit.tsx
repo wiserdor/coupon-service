@@ -21,6 +21,9 @@ export const CouponEdit: FC = (props) => (
       <BooleanInput source="dress_used" />
       <BooleanInput source="makeup_used" />
       <BooleanInput source="hair_used" />
+      <TextInput source="dress_vendor" />
+      <TextInput source="makeup_vendor" />
+      <TextInput source="hair_vendor" />
       <DateInput disabled source="created_date" allowEmpty />
       <TextInput disabled source="hair_scanned_location" allowEmpty />
       <TextInput disabled source="dress_scanned_location" allowEmpty />

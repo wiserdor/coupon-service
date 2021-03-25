@@ -47,7 +47,8 @@ export const VendorList: FC = (props) => (
     <Datagrid rowClick="edit">
       <TextField disabled source="id" />
       <TextField source="email" />
-      <TextField source="name" />
+      <TextField source="first_name" />
+      <TextField source="last_name" />
       <TextField source="phone" />
       <EditButton />
     </Datagrid>

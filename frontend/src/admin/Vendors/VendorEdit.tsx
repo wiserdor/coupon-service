@@ -12,7 +12,8 @@ export const VendorEdit: FC = (props) => (
     <SimpleForm>
       <TextInput disabled source="id" />
       <TextInput source="email" />
-      <TextInput source="name" />
+      <TextInput source="first_name" />
+      <TextInput source="last_name" />
       <TextInput source="phone" />
     </SimpleForm>
   </Edit>
