@@ -3,7 +3,8 @@ from pydantic import BaseModel
 
 class VendorBase(BaseModel):
     email: str
-    name: str
+    first_name: str
+    last_name: str
     phone: str
 
 

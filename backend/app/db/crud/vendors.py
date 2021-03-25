@@ -27,7 +27,8 @@ def get_vendor_by_email(db: Session, email: str) -> Vendor:
 
 def create_vendor(db: Session, vendor: VendorCreate):
     db_vendor = models.Vendor(
-        name=vendor.name,
+        first_name=vendor.first_name,
+        last_name=vendor.last_name,
         email=vendor.email,
         phone=vendor.phone
     )

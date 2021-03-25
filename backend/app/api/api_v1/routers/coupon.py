@@ -122,6 +122,7 @@ async def validate_coupon(
     """
     coupon = get_coupon_by_coupon_id(db, coupon_validation.coupon_id)
     vendor = get_vendor_by_email(db, coupon_validation.email)
+
     coupon_config = db.query(models.CouponConfig).first()
 
     if coupon_validation.password == coupon_config.hair_password:
@@ -129,6 +130,7 @@ async def validate_coupon(
             raise HTTPException(409, "Coupon already used")
         else:
             coupon.hair_used = True
+            coupon.hair_vendor = vendor.email
             coupon.hair_scanned_date = datetime.utcnow()
             coupon.hair_scanned_location = coupon_validation.geo_location
             db.commit()
@@ -137,6 +139,7 @@ async def validate_coupon(
             raise HTTPException(409, "Coupon already used")
         else:
             coupon.dress_used = True
+            coupon.dress_vendor = vendor.email
             coupon.dress_scanned_date = datetime.utcnow()
             coupon.dress_scanned_location = coupon_validation.geo_location
             db.commit()
@@ -145,6 +148,7 @@ async def validate_coupon(
             raise HTTPException(409, "Coupon already used")
         else:
             coupon.makeup_used = True
+            coupon.makeup_vendor = vendor.email
             coupon.makeup_scanned_date = datetime.utcnow()
             coupon.makeup_scanned_location = coupon_validation.geo_location
             db.commit()
