@@ -17,9 +17,11 @@ Coupon service project has been created for Neshef.co.il .
 Starting the project with hot-reloading enabled (the first time it will take a while):
 
 docker-compose up -d
+
 To run the alembic migrations (for the users table):
 
 docker-compose run --rm backend alembic upgrade head
+
 And navigate to http://localhost:8000/api/docs
 
 ### Frontend
