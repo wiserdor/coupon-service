@@ -26,9 +26,9 @@ And navigate to http://localhost:8000/api/docs
 
 ### Frontend
 
-```npm install && npm run build``` //For dev server: npm start
+```npm install && npm run build``` //For dev server: ```npm start```
 
-```yarn && yarn build``` //For dev server: yarn start
+```yarn && yarn build``` //For dev server: ```yarn start```
 
 
 
