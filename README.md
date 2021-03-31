@@ -31,5 +31,10 @@ And navigate to http://localhost:8000/api/docs
 ```yarn && yarn build``` //For dev server: ```yarn start```
 
 
+### Tests
+
+```docker-compose run backend pytest```
+
+or use ```scripts/test_backend.sh ```
 
 Project created with the help of BuunTu project https://github.com/Buuntu/fastapi-react
