@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 import typing as t
 
 from app.core import config, security
+from app.db.crud.coupon_config import create_coupon_config
 from app.db.session import Base, get_db
 from app.db import models
 from app.main import app
@@ -90,6 +91,11 @@ def client(test_db):
 @pytest.fixture
 def test_password() -> str:
     return "securepassword"
+
+
+@pytest.fixture
+def test_coupon_config(test_db):
+    return create_coupon_config(test_db)
 
 
 def get_password_hash() -> str:

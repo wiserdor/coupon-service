@@ -4,7 +4,7 @@ import typing as t
 
 from app.db import models
 from app.db.schemas.coupons import CouponOut, CouponBase, Coupon, CouponCreate, CouponEdit
-from mailjet import send_email
+from app.mailjet import send_email
 
 
 def get_coupon(db: Session, coupon_id: int):
@@ -41,7 +41,7 @@ def create_coupon(db: Session, coupon: CouponCreate) -> CouponCreate:
     db.add(db_coupon)
     db.commit()
     db.refresh(db_coupon)
-    print("sending")
+
     send_email(db, coupon.email, 'Shafir and omri', 'girl', 'הקופון שלך מוכן', 'קיבלת קופון', db_coupon.coupon_id)
     return db_coupon
 

@@ -4,9 +4,10 @@ from fastapi import APIRouter, Request, Depends, Response, HTTPException
 import typing as t
 
 from sqlalchemy import or_
+
 from app.db.schemas.coupons import Coupon, CouponCreate, CouponEdit, CouponValidate, CouponOut
-from core.auth import get_current_active_superuser
-from db.crud.coupons import (
+from app.core.auth import get_current_active_superuser
+from app.db.crud.coupons import (
     get_coupons,
     create_coupon,
     edit_coupon,
@@ -14,9 +15,9 @@ from db.crud.coupons import (
     get_coupon,
     get_coupon_by_coupon_id
 )
-from db.crud.vendors import get_vendor_by_email
-import db.models as models
-from db.session import get_db
+from app.db.crud.vendors import get_vendor_by_email
+import app.db.models as models
+from app.db.session import get_db
 
 coupons_router = r = APIRouter()
 public_coupon_router = rp = APIRouter()
@@ -165,7 +166,6 @@ async def coupon_exists(
         request: Request,
         coupon_id: str,
         db=Depends(get_db),
-        current_user=Depends(get_current_active_superuser),
 ):
     """
     Get any coupon details

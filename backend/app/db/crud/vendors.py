@@ -4,7 +4,7 @@ import typing as t
 
 from app.db import models
 from app.db.schemas.vendors import VendorOut, VendorCreate, VendorEdit, Vendor
-from db.crud.coupons import get_coupon
+from app.db.crud.coupons import get_coupon
 
 
 def get_vendors(db: Session, skip: int = 0, limit: int = 100) -> t.List[VendorOut]:

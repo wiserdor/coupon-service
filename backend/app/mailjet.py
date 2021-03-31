@@ -1,11 +1,14 @@
 # import the mailjet wrapper
 import qrcode
 import os
-from mailjet_rest import Client
-import base64
 from io import BytesIO
+import base64
+
 from sqlalchemy.orm import Session
-from db import models
+
+from mailjet_rest import Client
+
+from app.db import models
 
 # Get your environment Mailjet keys
 
@@ -64,4 +67,3 @@ def send_email(db: Session, to_mail, from_name, to_name, subject, text_part, cou
         ]
     }
     result = mailjet.send.create(data=data)
-    print(result)

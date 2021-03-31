@@ -1,9 +1,10 @@
+import typing as t
+
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
-import typing as t
-from app.db import models
 
-from db.schemas.coupon_config import CouponConfigOut, CouponConfigEdit
+from app.db import models
+from app.db.schemas.coupon_config import CouponConfigOut, CouponConfigEdit
 
 
 def get_coupon_config(

@@ -2,8 +2,8 @@ from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 import typing as t
 
-from db import models
-from db.schemas.users import UserBase, UserOut, UserCreate, UserEdit, User
+from app.db import models
+from app.db.schemas.users import UserBase, UserOut, UserCreate, UserEdit, User
 from app.core.security import get_password_hash
 
 

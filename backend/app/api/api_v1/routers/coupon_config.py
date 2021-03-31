@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Response, Depends, Request
 import typing as t
-import pprint
-from core.auth import get_current_active_superuser
-from db.crud.coupon_config import get_coupon_config, edit_coupon_config, create_coupon_config, delete_coupon_config, \
-    get_coupon_config_by_id
-from db.schemas.coupon_config import CouponConfigOut, CouponConfigEdit, CouponConfigCreate
-from db.session import get_db
+
+from fastapi import APIRouter, Response, Depends, Request
+
+from app.core.auth import get_current_active_superuser
+from app.db.crud.coupon_config import get_coupon_config, edit_coupon_config, create_coupon_config, \
+    delete_coupon_config, get_coupon_config_by_id
+from app.db.schemas.coupon_config import CouponConfigOut, CouponConfigEdit, CouponConfigCreate
+from app.db.session import get_db
 
 coupon_config_router = r = APIRouter()
 
