@@ -24,8 +24,8 @@ And navigate to http://localhost:8000/api/docs
 
 ### Frontend
 
-
-yarn && yarn build
+npm install && npm run build //For dev server: npm start
+yarn && yarn build //For dev server: yarn start
 
 
 
